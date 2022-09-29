@@ -13,6 +13,7 @@ export interface ITask {
 export interface ITasksContext {
   tasks: ITask[];
   addTask(task: ITask): void;
+  removeTask(id: string): void;
 }
 
 const taskData = '@MyTasks:Tasks';
@@ -45,9 +46,24 @@ export const TaskProvider: React.FunctionComponent<IProps> = ({children}) => {
     }
   };
 
+  const removeTask = async (id: string) => {
+    const newTaskList = data.filter(task => task.id !== id);
+    setData(newTaskList);
+    await AsyncStorage.setItem(taskData, JSON.stringify(newTaskList));
+  };
+
   return (
-    <TasksContext.Provider value={{tasks: data, addTask}}>
+    <TasksContext.Provider value={{tasks: data, addTask, removeTask}}>
       {children}
     </TasksContext.Provider>
   );
 };
+
+export function useTaskList(): ITasksContext {
+  const context = React.useContext(TasksContext);
+
+  if (!context) {
+    throw new Error('useTaskList deve ser usado em TaskProvider');
+  }
+  return context;
+}

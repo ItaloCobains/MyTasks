@@ -9,12 +9,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {TaskList} from '../../components/TaskList';
-import {TasksContext} from '../../Context/TasksContext';
+import {useTaskList} from '../../Context/TasksContext';
 
 export const Home = () => {
   const [newTask, setNewTask] = React.useState('');
-
-  const {addTask} = React.useContext(TasksContext);
+  const {addTask} = useTaskList();
 
   const handleAddNewTask = () => {
     const data = {
