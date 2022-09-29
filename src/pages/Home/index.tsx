@@ -9,23 +9,20 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {TaskList} from '../../components/TaskList';
-
-interface Task {
-  id: string;
-  title: string;
-}
+import {TasksContext} from '../../Context/TasksContext';
 
 export const Home = () => {
   const [newTask, setNewTask] = React.useState('');
-  const [tasks, setTasks] = React.useState<Task[]>([]);
+
+  const {addTask} = React.useContext(TasksContext);
 
   const handleAddNewTask = () => {
-    const data: Task = {
+    const data = {
       id: String(new Date().getTime()),
       title: newTask ? newTask : 'Task empty',
     };
 
-    setTasks([...tasks, data]);
+    addTask(data);
   };
 
   return (
@@ -52,7 +49,7 @@ export const Home = () => {
             </TouchableOpacity>
           ))}
         </ScrollView> */}
-        <TaskList tasks={tasks} />
+        <TaskList />
       </View>
     </SafeAreaView>
   );
