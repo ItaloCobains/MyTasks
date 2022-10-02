@@ -7,6 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
+    "test:w": "npx jest --watchAll",
+    "test:coverage": "yarn test --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
@@ -38,19 +40,5 @@
     "prettier": "^2.7.1",
     "react-test-renderer": "18.1.0",
     "typescript": "^4.8.3"
-  },
-  "jest": {
-    "preset": "react-native",
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
   }
 }
