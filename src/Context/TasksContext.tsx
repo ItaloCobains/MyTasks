@@ -16,40 +16,41 @@ export interface ITasksContext {
   removeTask(id: string): void;
 }
 
-const taskData = '@MyTasks:Tasks';
+const tasksData = '@MyTasks:Tasks';
 
 export const TasksContext = React.createContext<ITasksContext>(
   {} as ITasksContext,
 );
 
-export const TaskProvider: React.FunctionComponent<IProps> = ({children}) => {
+export const TasksProvider: React.FunctionComponent<IProps> = ({children}) => {
   const [data, setData] = React.useState<ITask[]>([]);
 
   React.useEffect(() => {
-    async function loadTask() {
-      const taskList = await AsyncStorage.getItem(taskData);
+    async function loadTasks() {
+      const taskList = await AsyncStorage.getItem(tasksData);
 
       if (taskList) {
         setData(JSON.parse(taskList));
       }
     }
-    loadTask();
+
+    loadTasks();
   }, []);
 
   const addTask = async (task: ITask) => {
     try {
       const newTaskList = [...data, task];
       setData(newTaskList);
-      await AsyncStorage.setItem(taskData, JSON.stringify(newTaskList));
-    } catch (err) {
-      throw new Error(err as string);
+      await AsyncStorage.setItem(tasksData, JSON.stringify(newTaskList));
+    } catch (error) {
+      throw new Error(error as string);
     }
   };
 
   const removeTask = async (id: string) => {
     const newTaskList = data.filter(task => task.id !== id);
     setData(newTaskList);
-    await AsyncStorage.setItem(taskData, JSON.stringify(newTaskList));
+    await AsyncStorage.setItem(tasksData, JSON.stringify(newTaskList));
   };
 
   return (
@@ -63,7 +64,8 @@ export function useTaskList(): ITasksContext {
   const context = React.useContext(TasksContext);
 
   if (!context) {
-    throw new Error('useTaskList deve ser usado em TaskProvider');
+    throw new Error('useTaskList deve ser usado em um TasksProvider');
   }
+
   return context;
 }

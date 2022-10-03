@@ -1,12 +1,17 @@
 import React from 'react';
-import {TaskProvider} from './src/Context/TasksContext';
+import SplashScreen from 'react-native-splash-screen';
+import {TasksProvider} from './src/context/TasksContext';
 import {Home} from './src/pages/Home';
 
 const App = () => {
+  React.useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
-    <TaskProvider>
+    <TasksProvider>
       <Home />
-    </TaskProvider>
+    </TasksProvider>
   );
 };
 

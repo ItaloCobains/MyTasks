@@ -6,22 +6,20 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import {ITask, useTaskList} from '../../Context/TasksContext';
+import {ITask, useTaskList} from '../../context/TasksContext';
 
 export const TaskList = () => {
   const {tasks, removeTask} = useTaskList();
 
-  const handleRemoveTasks = (id: string) => {
-    Alert.alert('Tem certeza ?', 'Deseja realmente escluir a tarefa ?', [
+  const handleRemoveTask = (id: string) => {
+    Alert.alert('Tem certeza?', 'Deseja realmente excluir a tarefa?', [
       {
         text: 'Cancelar',
         onPress: () => {},
       },
       {
         text: 'Excluir',
-        onPress: () => {
-          removeTask(id);
-        },
+        onPress: () => removeTask(id),
       },
     ]);
   };
@@ -32,7 +30,7 @@ export const TaskList = () => {
       keyExtractor={item => item.id}
       renderItem={({item}) => (
         <TouchableOpacity
-          onPress={() => handleRemoveTasks(item.id)}
+          onPress={() => handleRemoveTask(item.id)}
           style={styles.buttonTask}>
           <Text style={styles.titleTask}>{item.title}</Text>
         </TouchableOpacity>

@@ -1,15 +1,15 @@
 import React from 'react';
 import {
+  Platform,
   Text,
+  TextInput,
+  TouchableOpacity,
   View,
   StyleSheet,
   SafeAreaView,
-  TextInput,
-  Platform,
-  TouchableOpacity,
 } from 'react-native';
 import {TaskList} from '../../components/TaskList';
-import {useTaskList} from '../../Context/TasksContext';
+import {useTaskList} from '../../context/TasksContext';
 
 export const Home = () => {
   const [newTask, setNewTask] = React.useState('');
@@ -25,14 +25,14 @@ export const Home = () => {
   };
 
   return (
-    <SafeAreaView style={styles.SafeArea}>
-      <View style={styles.Container}>
-        <Text style={styles.title}>Bem vindo, Dev</Text>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome, Dev!</Text>
         <TextInput
-          placeholderTextColor="#555"
-          placeholder="Nova Tarefa ..."
-          style={styles.input}
           onChangeText={setNewTask}
+          placeholderTextColor="#555"
+          placeholder="Nova tarefa..."
+          style={styles.input}
         />
         <TouchableOpacity
           testID="addButton"
@@ -41,14 +41,9 @@ export const Home = () => {
           style={styles.button}>
           <Text style={styles.buttonText}>Adicionar</Text>
         </TouchableOpacity>
+
         <Text style={styles.titleTasks}>Minhas Tarefas</Text>
-        {/* <ScrollView>
-          {tasks.map(task => (
-            <TouchableOpacity key={task.id} style={styles.buttonTask}>
-              <Text style={styles.titleTask}>{task.title}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView> */}
+
         <TaskList />
       </View>
     </SafeAreaView>
@@ -56,11 +51,11 @@ export const Home = () => {
 };
 
 const styles = StyleSheet.create({
-  SafeArea: {
+  safeArea: {
     flex: 1,
     backgroundColor: '#121214',
   },
-  Container: {
+  container: {
     flex: 1,
     backgroundColor: '#121214',
     paddingHorizontal: 30,
@@ -87,7 +82,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#eba417',
-    padding: Platform.OS === 'ios' ? 15 : 12,
+    padding: 15,
     borderRadius: 7,
     alignItems: 'center',
     marginTop: 20,

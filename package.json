@@ -1,5 +1,5 @@
 {
-  "name": "MyTasks",
+  "name": "mytasks",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,37 +8,39 @@
     "start": "react-native start",
     "test": "jest",
     "test:w": "npx jest --watchAll",
-    "test:coverage": "yarn test --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.17.10",
-    "react": "18.1.0",
-    "react-native": "0.70.1"
+    "@react-native-async-storage/async-storage": "^1.15.15",
+    "react": "17.0.2",
+    "react-native": "0.66.4",
+    "react-native-splash-screen": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@testing-library/jest-native": "^4.0.13",
-    "@testing-library/react-hooks": "^8.0.1",
-    "@testing-library/react-native": "^11.2.0",
-    "@tsconfig/react-native": "^2.0.2",
+    "@testing-library/jest-native": "^4.0.4",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/react-native": "^9.0.0",
     "@types/jest": "^26.0.23",
-    "@types/react-native": "^0.70.0",
-    "@types/react-test-renderer": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.37.0",
-    "@typescript-eslint/parser": "^5.37.0",
+    "@types/react-native": "^0.66.4",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
     "babel-jest": "^26.6.3",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.8",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^26.6.3",
-    "metro-react-native-babel-preset": "^0.72.1",
-    "prettier": "^2.7.1",
-    "react-test-renderer": "18.1.0",
-    "typescript": "^4.8.3"
+    "metro-react-native-babel-preset": "^0.66.2",
+    "prettier": "^2.5.1",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.4.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
   }
 }
